@@ -83,15 +83,16 @@ class WebratTest < ActionController::IntegrationTest
 
   # Firefox detects and prevents infinite redirects under Selenium
   unless ENV['WEBRAT_INTEGRATION_MODE'] == 'selenium'
-     test "should detect infinite redirects" do
-       assert_raises Webrat::InfiniteRedirectError do
-         visit infinite_redirect_path
-       end
+    test "should detect infinite redirects" do
+      assert_raises Webrat::InfiniteRedirectError do
+        visit infinite_redirect_path
+      end
     end
   end
 
-#  test "should be able to assert have tag" do
-#    visit root_path
-#    assert_have_tag "h1"
-#  end
+  #  test "should be able to assert have tag" do
+  #    visit root_path
+  #    assert_have_tag "h1"
+  #  end
+
 end

@@ -16,8 +16,8 @@ module Webrat
       @fields ||= Field.load_all(@session, @element)
     end
 
-    def submit
-      @session.request_page(form_action, form_method, params)
+    def submit(opts = {})
+      @session.request_page(form_action, form_method, params(opts))
     end
 
     def field_named(name, *field_types)
@@ -38,8 +38,8 @@ module Webrat
       end
     end
 
-    def params
-      all_params = {}
+    def params(opts = {})
+      all_params = opts.dup
 
       fields.each do |field|
         next if field.to_param.nil?

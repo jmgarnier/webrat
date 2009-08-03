@@ -77,4 +77,12 @@ class ButtonClickTest < ActionController::IntegrationTest
     click_button "input_image_alt"
   end
 
+  # https://webrat.lighthouseapp.com/projects/10503/tickets/15-cant-seem-to-clicks_button-an-image-button
+  test "should pass x and y coordinates for image buttons" do
+    visit image_submit_buttons_path
+    click_button 'input_image_id', :x => 5, :y => 100
+    # Controller create actions retuns a String with position
+    assert response.body.include?("5,100")
+  end
+
 end
