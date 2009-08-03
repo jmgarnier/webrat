@@ -198,3 +198,20 @@ desc 'Removes trailing whitespace'
 task :whitespace do
   sh %{find . -name '*.rb' -exec sed -i '' 's/ *$//g' {} \\;}
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "webrat"
+    gemspec.summary = "Webrat. Ruby Acceptance Testing for Web applications"
+    gemspec.description = "version adapted by garnierjm to add feature https://webrat.lighthouseapp.com/projects/10503-webrat/tickets/15-cant-seem-to-clicks_button-an-image-button#ticket-15-13"
+    gemspec.email = "bryan" + "@" + "brynary.com"
+    gemspec.homepage = "http://github.com/brynary/webrat"
+    gemspec.authors = ["Bryan Helmkamp"]
+    gemspec.files.exclude 'spec/**/*'
+    gemspec.test_files.exclude 'spec/**/*'
+    gemspec.files.include %w(vendor)
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
